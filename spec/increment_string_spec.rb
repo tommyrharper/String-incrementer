@@ -12,4 +12,9 @@ describe 'increment_string' do
   it 'returns foo02 for foo01' do
     expect(increment_string('foo01')).to eq 'foo02'
   end
+
+  it 'returns foo01 for foo00' do
+    expect(increment_string('foo00')).to eq 'foo01'
+  end
+
 end
