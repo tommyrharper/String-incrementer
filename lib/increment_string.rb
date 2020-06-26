@@ -1,13 +1,13 @@
 def increment_string(input)
-  input_word = find_word(input)
-  input_number_string = find_number(input)
+  input_word = input.gsub(/ *\d+$/, '')
+  input_number_string = input.scan( /\d+$/ ).first
   output_number_string = (input_number_string.to_i + 1).to_s
 
   if number_starts_with_zero?(input_number_string)
     output_number_string = add_zeros_to_output_number(input_number_string, output_number_string)
   end
 
-  output = input_word + output_number_string
+  input_word + output_number_string
 end
 
 def number_starts_with_zero?(input_number_string)
@@ -23,13 +23,5 @@ def add_zeros_to_output_number(input_number_string, output_number_string)
   for i in 1..number_of_zeros
     output_zeros = output_zeros + '0'
   end
-  output_number_string = output_zeros + output_number_string
-end
-
-def find_word(input)
-  input.gsub(/ *\d+$/, '')
-end
-
-def find_number(input)
-  input.scan( /\d+$/ ).first
+  output_zeros + output_number_string
 end
