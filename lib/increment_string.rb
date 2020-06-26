@@ -19,7 +19,7 @@ end
 def add_zeros(number)
   number_of_zeros = number[/^0+/].size
 
-  if number.split(//).last(1).join == '0' || number.split(//).last(1).join == '9'
+  if last_number_is_zero_or_nine?(number)
     number_of_zeros -= 1
   end
 
@@ -35,3 +35,6 @@ def output_zeros(number_of_zeros)
   output_zeros
 end
 
+def last_number_is_zero_or_nine?(number)
+  number.split(//).last(1).join == '0' || number.split(//).last(1).join == '9'
+end
