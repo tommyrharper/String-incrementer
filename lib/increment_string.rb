@@ -12,7 +12,7 @@ end
 
 def number_starts_with_zero?(number)
   if number != nil
-    number.itself[0] == '0'
+    number[0] == '0'
   end
 end
 
@@ -36,5 +36,5 @@ def output_zeros(number_of_zeros)
 end
 
 def last_number_is_zero_or_nine?(number)
-  number.split(//).last(1).join == '0' || number.split(//).last(1).join == '9'
+  number.to_i == 0 || number[-1] == '9'
 end
