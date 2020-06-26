@@ -324,3 +324,21 @@ You can also use ```.next```.
 Lets change our solution to use that.
 
 I will create a new file for this ```new_solution``` so we can clearly distinguish where I have borrowed from his code.
+
+Just using that simplifies my solution down to just this single method:
+
+```ruby
+def increment_string(input)
+  input_word = input.gsub(/ *\d+$/, '')
+  number = input.scan( /\d+$/ ).first.to_s
+  output_number_string = number.next
+
+  if output_number_string == ""
+    output_number_string = "1"
+  end
+
+  input_word + output_number_string
+end
+```
+
+There's a lesson. Don't reinvent the wheel. The problem - if you don't know the wheel exists, you don't know you don't need to invent it! This just comes down to experience. Now I will know this method is built into ruby if I come across a similar problem.
