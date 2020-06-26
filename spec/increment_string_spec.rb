@@ -17,4 +17,8 @@ describe 'increment_string' do
     expect(increment_string('foo00')).to eq 'foo01'
   end
 
+  it 'returns foobar01000 for foobar00999' do 
+    expect(increment_string('foobar00999')).to eq 'foobar01000'
+  end
+
 end
