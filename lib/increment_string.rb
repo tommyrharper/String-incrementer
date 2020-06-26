@@ -2,9 +2,11 @@ def increment_string(input)
   input_word = input.gsub(/ *\d+$/, '')
   number = input.scan( /\d+$/ ).first
   output_number_string = (number.to_i + 1).to_s
+  
   if number_starts_with_zero?(number)
     output_number_string = add_zeros(number) + output_number_string
   end
+
   input_word + output_number_string
 end
 
