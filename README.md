@@ -342,3 +342,19 @@ end
 ```
 
 There's a lesson. Don't reinvent the wheel. The problem - if you don't know the wheel exists, you don't know you don't need to invent it! This just comes down to experience. Now I will know this method is built into ruby if I come across a similar problem.
+
+Now what else can we learn? Well he uses this method called ```.empty?```. Lets use that in our code.
+```ruby
+def increment_string(input)
+  input_word = input.gsub(/ *\d+$/, '')
+  number = input.scan( /\d+$/ ).first.to_s
+  output_number_string = number.next
+
+  if output_number_string.empty?
+    output_number_string = "1"
+  end
+
+  input_word + output_number_string
+end
+```
+There we go!
