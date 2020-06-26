@@ -1,3 +1,5 @@
+# This is my solution
+
 def increment_string(input)
   input_word = input.gsub(/ *\d+$/, '')
   number = input.scan( /\d+$/ ).first
