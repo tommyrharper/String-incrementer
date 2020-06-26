@@ -18,6 +18,11 @@ end
 
 def add_zeros(input_number_string)
   number_of_zeros = input_number_string[/^0+/].size
+
+  if input_number_string.split(//).last(1).join == '0'
+    number_of_zeros -= 1
+  end
+
   output_zeros = ''
   i = 0
   for i in 1..number_of_zeros
