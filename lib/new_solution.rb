@@ -11,4 +11,3 @@ def increment_string(input)
 
   input_word + output_number_string
 end
-
