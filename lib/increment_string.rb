@@ -1,6 +1,6 @@
 def increment_string(input)
   input_word = find_word(input)
-  input_number_string = input.scan( /\d+$/ ).first
+  input_number_string = find_number(input)
   output_number_string = (input_number_string.to_i + 1).to_s
 
   if number_starts_with_zero?(input_number_string)
@@ -28,4 +28,8 @@ end
 
 def find_word(input)
   input.gsub(/ *\d+$/, '')
+end
+
+def find_number(input)
+  input.scan( /\d+$/ ).first
 end
