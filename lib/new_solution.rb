@@ -5,7 +5,7 @@ def increment_string(input)
   number = input.scan( /\d+$/ ).first.to_s
   output_number_string = number.next
 
-  if output_number_string == ""
+  if output_number_string.empty?
     output_number_string = "1"
   end
 
