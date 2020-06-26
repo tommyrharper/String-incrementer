@@ -4,7 +4,7 @@ def increment_string(input)
   output_number_string = (input_number_string.to_i + 1).to_s
 
   if number_starts_with_zero?(input_number_string)
-    output_number_string = add_zeros_to_output_number(input_number_string, output_number_string)
+    output_number_string = add_zeros(input_number_string) + output_number_string
   end
 
   input_word + output_number_string
@@ -16,12 +16,12 @@ def number_starts_with_zero?(input_number_string)
   end
 end
 
-def add_zeros_to_output_number(input_number_string, output_number_string)
+def add_zeros(input_number_string)
   number_of_zeros = input_number_string[/^0+/].size
   output_zeros = ''
   i = 0
   for i in 1..number_of_zeros
     output_zeros = output_zeros + '0'
   end
-  output_zeros + output_number_string
+  output_zeros
 end
