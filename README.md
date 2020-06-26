@@ -358,3 +358,53 @@ def increment_string(input)
 end
 ```
 There we go!
+
+Okay now here is the more challenging bit to understand about it.
+
+How does this work?
+```ruby
+input.sub(/\d*$/) { |n| n.empty? ? 1 : n.succ }
+```
+
+Lets break it down:
+
+```ruby
+# lets imagine the input is "hello123"
+def increment_string(input)
+
+  # input.sub(/\d*$/) returns the word
+  # In this case
+  # "hello123".sub(/\d*$/, '') would return "hello"
+  # In this situation, the rest of the string will be replaced
+  # According to the logic of expression
+  input.sub(/\d*$/) { |n| # n is the number on the end of the string
+                          # In this case "123"
+  # If n is emtpy set it to 1 else add 1 to the number
+  n.empty? ? 1 : n.succ 
+  # In this scenario it will return "124"
+  # And it will subsitute "123" with "1234"
+  }
+  # Hence "hello1234" will be returned
+end
+```
+
+So to summarise, this expression:
+```ruby
+input.sub(/\d*$/) { |n| n.empty? ? 1 : n.succ }
+```
+
+Can be used to take a string, and substitute part of that string, based on some logic according to the contents of that part.
+
+The part of the string you want to substitute is defined by the regex expression:
+```ruby
+(/\d*$/)
+```
+The logic is within the block of code following the regex expression:
+```ruby
+{ |n| n.empty? ? 1 : n.succ }
+```
+And ```|n|``` is the part your are substituting.
+
+Okay I think we have milked this Kata dry for all the knowledge we can gain from it.
+
+Have a wonderful day :).
