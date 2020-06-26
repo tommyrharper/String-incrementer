@@ -188,3 +188,24 @@ end
 GREEN.
 
 Now it is time to write another test: 'foobar00' returns 'foobar01'. RED.
+
+I am getting 'foobar001'.
+
+Too fix I simply had to change my ``` add_zeros``` method to this:
+```ruby
+def add_zeros(input_number_string)
+  number_of_zeros = input_number_string[/^0+/].size
+
+  # This conditional is the new peice of code
+  if input_number_string.split(//).last(1).join == '0'
+    number_of_zeros -= 1
+  end
+
+  output_zeros = ''
+  i = 0
+  for i in 1..number_of_zeros
+    output_zeros = output_zeros + '0'
+  end
+  output_zeros
+end
+```
