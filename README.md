@@ -306,3 +306,21 @@ def output_zeros(number_of_zeros)
   output_zeros
 end
 ```
+
+## Deconstructing the best solution on CodeWars
+
+Here is the best solution:
+
+```ruby
+def increment_string(input)
+  input.sub(/\d*$/) { |n| n.empty? ? 1 : n.succ }
+end
+```
+
+So what can we learn from this, well to start, ```.succ``` does all the work for us! Amazing, it will add 2 to any number in string format, and retain the correct number of zeros before it. Wow. That's an insider ruby trick.
+
+You can also use ```.next```.
+
+Lets change our solution to use that.
+
+I will create a new file for this ```new_solution``` so we can clearly distinguish where I have borrowed from his code.
