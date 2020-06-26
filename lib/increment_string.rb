@@ -3,8 +3,7 @@ def increment_string(input)
   input_number_string = input.scan( /\d+$/ ).first
   output_number_string = (input_number_string.to_i + 1).to_s
 
-  if input_number_string != nil
-    if input_number_string.itself[0,1] == '0'
+  if number_starts_with_zero?(input_number_string)
       number_of_zeros = input_number_string[/^0+/].size
       output_zeros = ''
       i = 0
@@ -12,8 +11,13 @@ def increment_string(input)
         output_zeros = output_zeros + '0'
       end
       output_number_string = output_zeros + output_number_string
-    end
   end
 
   output = input_word + output_number_string
+end
+
+def number_starts_with_zero?(input_number_string)
+  if input_number_string != nil
+    input_number_string.itself[0] == '0'
+  end
 end
