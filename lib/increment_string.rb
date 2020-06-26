@@ -17,12 +17,20 @@ def number_starts_with_zero?(input_number_string)
 end
 
 def add_zeros(input_number_string)
-  number_of_zeros = input_number_string[/^0+/].size
+  number_of_zeros = number_of_zeros(input_number_string)
 
   if input_number_string.split(//).last(1).join == '0'
     number_of_zeros -= 1
   end
+  
+  output_zeros(number_of_zeros)
+end
 
+def number_of_zeros(input_number_string)
+  input_number_string[/^0+/].size
+end
+
+def output_zeros(number_of_zeros)
   output_zeros = ''
   i = 0
   for i in 1..number_of_zeros
