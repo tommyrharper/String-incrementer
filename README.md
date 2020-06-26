@@ -245,8 +245,26 @@ if last_number_is_zero_or_nine?(number)
 end
 
 def last_number_is_zero_or_nine?(number)
-  number.split(//).last(1).join == '0' || number.split(//).last(1).join == '9'
+  number[-1] == '0' || number[-1] == '9'
 end
 ```
 
 There you go, that is more readable.
+
+Lets try and find another edge case that will break the code. How about this?
+
+'dcvhvnrwr080' returns 'dcvhvnrwr081'. RED.
+
+Aha, we found another failure. Lets fix it.
+
+Simple fix for this one:
+
+```ruby
+def last_number_is_zero_or_nine?(number)
+  number.to_i == 0 || number[-1] == '9'
+end
+```
+
+Sorted. GREEN.
+
+Quick refactor. Minor change.
