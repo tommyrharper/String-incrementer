@@ -209,3 +209,17 @@ def add_zeros(input_number_string)
   output_zeros
 end
 ```
+
+This method looks a bit ugly now though, lets refactor it.
+
+I refactored out this method:
+```ruby
+def output_zeros(number_of_zeros)
+  output_zeros = ''
+  i = 0
+  for i in 1..number_of_zeros
+    output_zeros = output_zeros + '0'
+  end
+  output_zeros
+end
+```
