@@ -223,3 +223,18 @@ def output_zeros(number_of_zeros)
   output_zeros
 end
 ```
+
+Now lets write another test that breaks it:
+
+Expect 'foobar00999' to return 'foobar01000'. RED.
+
+The key to solving this edge case is as follows:
+
+Add an extra conditional in the add_zeros method:
+```ruby
+if input_number_string.split(//).last(1).join == '9'
+    number_of_zeros -= 1
+end
+```
+
+Again the solution looks ugly. Lets refactor it.
