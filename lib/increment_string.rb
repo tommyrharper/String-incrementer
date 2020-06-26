@@ -1,5 +1,5 @@
 def increment_string(input)
-  input_word = input.gsub(/ *\d+$/, '')
+  input_word = find_word(input)
   input_number_string = input.scan( /\d+$/ ).first
   output_number_string = (input_number_string.to_i + 1).to_s
 
@@ -24,4 +24,8 @@ def add_zeros_to_output_number(input_number_string, output_number_string)
     output_zeros = output_zeros + '0'
   end
   output_number_string = output_zeros + output_number_string
+end
+
+def find_word(input)
+  input.gsub(/ *\d+$/, '')
 end
