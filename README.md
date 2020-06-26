@@ -28,6 +28,12 @@ Attention: If the number has leading zeros the amount of digits should be consid
 ### Planning
 
 Input| Output
+-----|------
+foo | foo1
+foobar23 | foobar24
+foo0042 | foo0043
+foo9 | foo10
+foo099 | foo100
 
 ### Starting up
 
@@ -45,10 +51,25 @@ touch ./lib/increment_string.rb
 touch ./spec/increment_string_spec.rb
 ```
 
-### Writing the first test
+### Setting up the test file
 
 First I simply write>
 ```ruby
 require './increment_string_spec.rb'
 ```
 Then I run ```rspec```, it returns green, 0 examples, 0 failures. Good, we are ready to rumble.
+
+### Writing the first test
+
+Expect ```increment_string('foo')``` to return ```'foo1'```. RED
+
+Write this code:
+```ruby
+def increment_string(input)
+  input + 1.to_s
+end
+```
+
+GREEN.
+
+### Continuing with TDD
