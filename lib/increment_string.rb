@@ -1,25 +1,25 @@
 def increment_string(input)
   input_word = input.gsub(/ *\d+$/, '')
-  input_number_string = input.scan( /\d+$/ ).first
-  output_number_string = (input_number_string.to_i + 1).to_s
+  number = input.scan( /\d+$/ ).first
+  output_number_string = (number.to_i + 1).to_s
 
-  if number_starts_with_zero?(input_number_string)
-    output_number_string = add_zeros(input_number_string) + output_number_string
+  if number_starts_with_zero?(number)
+    output_number_string = add_zeros(number) + output_number_string
   end
 
   input_word + output_number_string
 end
 
-def number_starts_with_zero?(input_number_string)
-  if input_number_string != nil
-    input_number_string.itself[0] == '0'
+def number_starts_with_zero?(number)
+  if number != nil
+    number.itself[0] == '0'
   end
 end
 
-def add_zeros(input_number_string)
-  number_of_zeros = input_number_string[/^0+/].size
+def add_zeros(number)
+  number_of_zeros = number[/^0+/].size
 
-  if input_number_string.split(//).last(1).join == '0' || input_number_string.split(//).last(1).join == '9'
+  if number.split(//).last(1).join == '0' || number.split(//).last(1).join == '9'
     number_of_zeros -= 1
   end
 
@@ -34,3 +34,4 @@ def output_zeros(number_of_zeros)
   end
   output_zeros
 end
+
