@@ -121,3 +121,70 @@ end
 GREEN.
 
 Now this code is looking rather ugly. Lets refactor it.
+
+First I refactored out a new method to check if the number starts with zeros:
+```ruby
+def number_starts_with_zero?(input_number_string)
+  if input_number_string != nil
+    input_number_string.itself[0] == '0'
+  end
+end
+```
+Then I refactored out another method:
+```ruby
+def add_zeros_to_output_number(input_number_string, output_number_string)
+  number_of_zeros = input_number_string[/^0+/].size
+  output_zeros = ''
+  i = 0
+  for i in 1..number_of_zeros
+    output_zeros = output_zeros + '0'
+  end
+  output_number_string = output_zeros + output_number_string
+end
+```
+Then I further refactored that method to make it simpler:
+```ruby
+def add_zeros(input_number_string)
+  number_of_zeros = input_number_string[/^0+/].size
+  output_zeros = ''
+  i = 0
+  for i in 1..number_of_zeros
+    output_zeros = output_zeros + '0'
+  end
+  output_zeros
+end
+```
+Now the code looks like this:
+```ruby
+def increment_string(input)
+  input_word = input.gsub(/ *\d+$/, '')
+  input_number_string = input.scan( /\d+$/ ).first
+  output_number_string = (input_number_string.to_i + 1).to_s
+
+  if number_starts_with_zero?(input_number_string)
+    output_number_string = add_zeros(input_number_string) + output_number_string
+  end
+
+  input_word + output_number_string
+end
+
+def number_starts_with_zero?(input_number_string)
+  if input_number_string != nil
+    input_number_string.itself[0] == '0'
+  end
+end
+
+def add_zeros(input_number_string)
+  number_of_zeros = input_number_string[/^0+/].size
+  output_zeros = ''
+  i = 0
+  for i in 1..number_of_zeros
+    output_zeros = output_zeros + '0'
+  end
+  output_zeros
+end
+```
+
+GREEN.
+
+Now it is time to write another test: 'foobar00' returns 'foobar01'. RED.
