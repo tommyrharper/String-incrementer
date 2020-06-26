@@ -61,6 +61,8 @@ Then I run ```rspec```, it returns green, 0 examples, 0 failures. Good, we are r
 
 ### Writing the first test
 
+First I am going to write the simplest test possible to make the smallest possible incrementation in building this code.
+
 Expect ```increment_string('foo')``` to return ```'foo1'```. RED
 
 Write this code:
@@ -74,6 +76,8 @@ GREEN.
 
 ### Continuing with TDD
 
+Now I am going to write the next most simple test that I know will break my code.
+
 Expect 'foo1' to return 'foo2'. RED.
 
 ```ruby
@@ -86,3 +90,34 @@ end
 ```
 
 GREEN.
+
+And now I repeat the same process.
+
+Expect 'foo01' to return 'foo02'. RED.
+
+I write the following code:
+```ruby
+def increment_string(input)
+  input_word = input.gsub(/ *\d+$/, '')
+  input_number_string = input.scan( /\d+$/ ).first
+  output_number_string = (input_number_string.to_i + 1).to_s
+
+  if input_number_string != nil
+    if input_number_string.itself[0,1] == '0'
+      number_of_zeros = input_number_string[/^0+/].size
+      output_zeros = ''
+      i = 0
+      for i in 1..number_of_zeros
+        output_zeros = output_zeros + '0'
+      end
+      output_number_string = output_zeros + output_number_string
+    end
+  end
+
+  output = input_word + output_number_string
+end
+```
+
+GREEN.
+
+Now this code is looking rather ugly. Lets refactor it.
